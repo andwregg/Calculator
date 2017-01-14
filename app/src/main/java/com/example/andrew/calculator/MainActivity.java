@@ -26,12 +26,16 @@ public class MainActivity extends AppCompatActivity {
     Button buttonEq;
     Button buttonC;
     EditText textField;
+    EditText shadowText;
     float numOne;
     float numTwo;
+    float value;
+    String shadow;
     boolean addition;
     boolean subtraction;
     boolean multiply;
     boolean division;
+    boolean equal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,102 +59,161 @@ public class MainActivity extends AppCompatActivity {
         buttonEq = (Button) findViewById(R.id.buttonEq);
         buttonC = (Button) findViewById(R.id.buttonC);
         textField = (EditText) findViewById(R.id.textField);
+        shadowText = (EditText) findViewById(R.id.shadowText);
 
         button0.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                if(equal){
+                    textField.setText(null);
+                    equal = false;
+                }
                 textField.setText(textField.getText() + "0");
             }
         });
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                if(equal){
+                    textField.setText(null);
+                    equal = false;
+                }
                 textField.setText(textField.getText() + "1");
             }
         });
 
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                if(equal){
+                    textField.setText(null);
+                    equal = false;
+                }
                 textField.setText(textField.getText() + "2");
             }
         });
 
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                if(equal){
+                    textField.setText(null);
+                    equal = false;
+                }
                 textField.setText(textField.getText() + "3");
             }
         });
 
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                if(equal){
+                    textField.setText(null);
+                    equal = false;
+                }
                 textField.setText(textField.getText() + "4");
             }
         });
 
         button5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                if(equal){
+                    textField.setText(null);
+                    equal = false;
+                }
                 textField.setText(textField.getText() + "5");
             }
         });
 
         button6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                if(equal){
+                    textField.setText(null);
+                    equal = false;
+                }
                 textField.setText(textField.getText() + "6");
             }
         });
 
         button7.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                if(equal){
+                    textField.setText(null);
+                    equal = false;
+                }
                 textField.setText(textField.getText() + "7");
             }
         });
 
         button8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                if(equal){
+                    textField.setText(null);
+                    equal = false;
+                }
                 textField.setText(textField.getText() + "8");
             }
         });
 
         button9.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                if(equal){
+                    textField.setText(null);
+                    equal = false;
+                }
                 textField.setText(textField.getText() + "9");
             }
         });
 
         buttonPer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                textField.setText(textField.getText() + ".");
+                if(equal){
+                    textField.setText(null);
+                    equal = false;
+                }
+                shadow = textField.getText().toString();
+                if(shadow.matches("")){
+                    textField.setText(textField.getText() + "0.");
+                }
+                else {
+                    textField.setText(textField.getText() + ".");
+                }
             }
         });
 
         buttonAdd.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 numOne = Float.parseFloat(textField.getText() + "");
+                shadow = textField.getText().toString();
                 addition = true;
                 textField.setText(null);
+                shadowText.setText(shadow);
             }
         });
 
         buttonSub.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 numOne = Float.parseFloat(textField.getText() + "");
+                shadow = textField.getText().toString();
                 subtraction = true;
                 textField.setText(null);
+                shadowText.setText(shadow);
             }
         });
 
         buttonMult.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 numOne = Float.parseFloat(textField.getText() + "");
+                shadow = textField.getText().toString();
                 multiply = true;
                 textField.setText(null);
+                shadowText.setText(shadow);
             }
         });
 
         buttonDiv.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 numOne = Float.parseFloat(textField.getText() + "");
+                shadow = textField.getText().toString();
                 division = true;
                 textField.setText(null);
+                shadowText.setText(shadow);
             }
         });
 
@@ -158,21 +221,47 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 numTwo = Float.parseFloat(textField.getText() + "");
                 if(addition){
-                    textField.setText(Float.toString(numOne+numTwo));
+                    value = numOne+numTwo;
+                    if(value == (int) value){
+                        textField.setText(Integer.toString(Math.round(value)));
+                    }
+                    else{
+                        textField.setText(Float.toString(numOne+numTwo));
+                    }
                     addition = false;
                 }
                 else if(subtraction){
-                    textField.setText(Float.toString(numOne-numTwo));
+                    value = numOne-numTwo;
+                    if(value == (int) value){
+                        textField.setText(Integer.toString(Math.round(value)));
+                    }
+                    else{
+                        textField.setText(Float.toString(numOne-numTwo));
+                    }
                     subtraction = false;
                 }
                 else if(multiply){
-                    textField.setText(Float.toString(numOne*numTwo));
+                    value = numOne*numTwo;
+                    if(value == (int) value){
+                        textField.setText(Integer.toString(Math.round(value)));
+                    }
+                    else{
+                        textField.setText(Float.toString(numOne*numTwo));
+                    }
                     multiply = false;
                 }
                 else if(division){
-                    textField.setText(Float.toString(numOne/numTwo));
+                    value = numOne/numTwo;
+                    if(value == (int) value){
+                        textField.setText(Integer.toString(Math.round(value)));
+                    }
+                    else{
+                        textField.setText(Float.toString(numOne/numTwo));
+                    }
                     division = false;
                 }
+                equal = true;
+                shadowText.setText(null);
             }
         });
 
