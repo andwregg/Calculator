@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonDiv;
     Button buttonEq;
     Button buttonC;
+    Button buttonSign;
     EditText textField;
     EditText shadowText;
     float numOne;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         button8 = (Button) findViewById(R.id.button8);
         button9 = (Button) findViewById(R.id.button9);
         buttonPer = (Button) findViewById(R.id.buttonPer);
+        buttonSign = (Button) findViewById(R.id.buttonSign);
         buttonAdd = (Button) findViewById(R.id.buttonAdd);
         buttonSub = (Button) findViewById(R.id.buttonSub);
         buttonMult = (Button) findViewById(R.id.buttonMult);
@@ -173,6 +175,25 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     textField.setText(textField.getText() + ".");
+                }
+            }
+        });
+
+        buttonSign.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                shadow = textField.getText().toString();
+                if(shadow.matches("")){
+                    textField.setText(shadow);
+                }
+                else {
+                    value = Float.parseFloat(textField.getText() + "");
+                    value = value * -1;
+                    if (value == (int) value) {
+                        textField.setText(Integer.toString(Math.round(value)));
+                    }
+                    else {
+                        textField.setText(Float.toString(value));
+                    }
                 }
             }
         });
